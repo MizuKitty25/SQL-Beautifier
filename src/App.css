@@ -1,0 +1,120 @@
+body {
+  margin: 0;
+  background: #1e1e1e;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* vertical centering */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.appContainer {
+  width: 95vw;           /* take almost full screen width */
+  max-width: none;       /* remove the restriction */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.appContainer h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 2rem;
+  color: #fff;
+}
+
+.editorContainer {
+  display: flex;
+  gap: 20px;
+  height: 65vh;
+}
+
+.editorWrapper {
+  flex: 1; /* evenly split left and right */
+  display: flex;
+  flex-direction: column;
+}
+
+.toolbar {
+  height: 40px;
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.iconBtn img {
+  width: 20px;
+  height: 20px;
+  filter: invert(1);
+}
+
+.editor {
+  flex: 1;
+  display: flex;
+  background: #1a1a1a;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+
+.lineNumbers {
+  background: #2d2d2d;
+  padding: 12px 8px;
+  margin: 0;
+  text-align: right;
+  color: #858585;
+  user-select: none;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 12px;
+  background: transparent;
+  color: white;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.middle {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center button */
+}
+
+.middle button {
+  padding: 10px 20px;
+  background: #4caf50;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s all;
+}
+
+.middle button:hover {
+  background: #45a049;
+}
