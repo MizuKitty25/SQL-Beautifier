@@ -1,87 +1,42 @@
-import { useState } from "react";
-import { format } from "sql-formatter";
-import copyIcon from "./assets/copy.png";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import MainLayout from "./components/MainLayout";
+import SqlBeautifier from "./pages/SqlBeautifier";
+import TextDiffChecker from "./pages/TextDiffChecker";
+import JsonFormatter from "./pages/JsonFormatter";
+import Base64Tool from "./pages/Base64Tool";
+import { useState, useEffect } from "react";
 
-export default function App() {
-  const [inputSql, setInputSql] = useState("");
-  const [outputSql, setOutputSql] = useState("");
-
-  const beautifySql = () => {
-    try {
-      const formatted = format(inputSql);
-      setOutputSql(formatted);
-    } catch {
-      setOutputSql("Invalid SQL");
-    }
-  };
-
-  const copyOutput = async () => {
-    await navigator.clipboard.writeText(outputSql);
-  };
-
-  const getLineNumbers = (text = "") => {
-    const lines = text.split("\n").length;
-    return Array.from({ length: lines }, (_, i) => i + 1).join("\n");
-  };
+function App() {
+  const [dark, setDark] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const basename = import.meta.env.DEV ? "/" : "/SQL-Beautifier/";
+  useEffect(() => {
+    document.body.className = dark ? "dark" : "";
+  }, [dark]);
 
   return (
-    <div className="page">
-    <div className="appContainer">
-    <h1>SQL Beautifier</h1>
-
-      <div className="editorContainer">
-
-        {/* LEFT INPUT */}
-        <div className="editorWrapper">
-          <div className="toolbar">
-            <span>Input</span>
-          </div>
-
-          <div className="editor">
-            <pre className="lineNumbers">
-              {getLineNumbers(inputSql)}
-            </pre>
-
-            <textarea
-              value={inputSql}
-              onChange={(e) => setInputSql(e.target.value)}
-              placeholder="Paste SQL here..."
+    <BrowserRouter basename={basename}>
+      <Routes>
+        <Route
+          element={
+            <MainLayout
+              open={sidebarOpen}
+              setOpen={setSidebarOpen}
+              dark={dark}
+              setDark={setDark}
             />
-          </div>
-        </div>
-
-        {/* CENTER BUTTON */}
-        <div className="middle">
-          <button onClick={beautifySql}>FORMAT ➜</button>
-        </div>
-
-        {/* RIGHT OUTPUT */}
-        <div className="editorWrapper">
-          <div className="toolbar">
-            <span>Output</span>
-
-            <button className="iconBtn" onClick={copyOutput}>
-              <img src={copyIcon} alt="copy" />
-            </button>
-          </div>
-
-          <div className="editor">
-            <pre className="lineNumbers">
-              {getLineNumbers(outputSql)}
-            </pre>
-
-            <textarea
-              value={outputSql}
-              readOnly
-              placeholder="Formatted SQL..."
-            />
-          </div>
-        </div>
-
-      </div>
-    </div>
-      </div>
-
+          }
+        >
+          <Route path="/" element={<Home />} />
+          <Route path="/sql-beautifier" element={<SqlBeautifier />} />
+          <Route path="/text-diff" element={<TextDiffChecker dark={dark} />} />
+          <Route path="/json-formatter" element={<JsonFormatter />} />
+          <Route path="/base64" element={<Base64Tool />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;

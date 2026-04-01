@@ -1,68 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #f4f3ef;
+  --surface: #ffffff;
+  --surface-2: #ebebeb;
+  --border: #d8d6d0;
+  --border-hover: #b0aea8;
+  --text: #111111;
+  --text-muted: #6b6968;
+  --text-dim: #b0aea8;
+  --accent: #4f5ef0;
+  --accent-dim: rgba(79, 94, 240, 0.08);
+  --card-bg: #ffffff;
+  --button-bg: #ebebeb;
+  --code-text: #111111;
+  --grid-line: rgba(0, 0, 0, 0.06);
+}
+
+body.dark {
+  --bg: #0e0e10;
+  --surface: #16161a;
+  --surface-2: #1e1e24;
+  --border: #2a2a32;
+  --border-hover: #3e3e4e;
+  --text: #e8e8f0;
+  --text-muted: #6b6b80;
+  --text-dim: #3e3e52;
+  --accent: #5b6ef5;
+  --accent-dim: rgba(91, 110, 245, 0.08);
+  --card-bg: #16161a;
+  --button-bg: #1e1e24;
+  --code-text: #e8e8f0;
+  --grid-line: rgba(255, 255, 255, 0.04);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s, color 0.2s;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+  margin-top: 0;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: var(--accent);
+  text-decoration: none;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+a:hover { text-decoration: underline; }
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid var(--border);
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: var(--button-bg);
+  color: var(--text);
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  transition: background 0.15s, border-color 0.15s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  background: var(--surface-2);
+  border-color: var(--border-hover);
 }

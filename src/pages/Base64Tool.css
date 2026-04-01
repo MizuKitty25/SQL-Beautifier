@@ -1,0 +1,48 @@
+.base64Tool {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.base64Tool h1 {
+  margin-bottom: 20px;
+}
+
+/* input + output */
+
+.inputBox,
+.outputBox {
+  width: 100%;
+  min-height: 140px;
+
+  background: var(--card-bg);
+  color: var(--code-text);
+
+  border: 1px solid rgba(0,0,0,0.2);
+  padding: 12px;
+  border-radius: 6px;
+
+  font-family: monospace;
+  resize: vertical;
+}
+
+.outputBox {
+  margin-top: 15px;
+}
+
+/* buttons */
+
+.buttons {
+  margin: 15px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  background: var(--button-bg);
+  color: var(--text);
+}
+
+.copyBtn {
+  margin-top: 10px;
+}
