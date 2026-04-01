@@ -30,7 +30,7 @@ function App() {
         >
           <Route path="/" element={<Home />} />
           <Route path="/sql-beautifier" element={<SqlBeautifier />} />
-          <Route path="/text-diff" element={<TextDiffChecker dark={dark} />} />
+          <Route path="/text-diff" element={<TextDiffChecker/>} />
           <Route path="/json-formatter" element={<JsonFormatter />} />
           <Route path="/base64" element={<Base64Tool />} />
         </Route>
